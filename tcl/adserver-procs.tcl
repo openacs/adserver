@@ -426,7 +426,7 @@ ad_proc -private adserver_href_attr {
     Returns href attribute.  
 
  } {
-     set ad_url "[ad_acs_adserver_url]adhref.tcl?adv_key=[ad_urlencode $adv_key]"
+     set ad_url "[ad_acs_adserver_url]adhref?adv_key=[ad_urlencode $adv_key]"
      if {$suppress_logging_p == 1} {
          append ad_url "&suppress_logging_p=1"
      }
@@ -443,7 +443,7 @@ ad_proc -private adserver_src_attr {
 
     Passes suppress_logging to adserver_image_url to build the url.
  } {
-     set ad_url "[ad_acs_adserver_url]adimg.tcl?adv_key=[ad_urlencode $adv_key]"
+     set ad_url "[ad_acs_adserver_url]adimg?adv_key=[ad_urlencode $adv_key]"
      if {$suppress_logging_p == 1} {
          append ad_url "&suppress_logging_p=1"
      }
