@@ -45,8 +45,9 @@
 <fullquery name="adserver_get_random_ad_key.adserver_count_group_ads">      
       <querytext>
       
-           select adv_count 
-             from advs_properties
+            select adv_count
+              from adv_groups
+             where group_key = :group_key
         
       </querytext>
 </fullquery>
@@ -68,7 +69,7 @@
       <querytext>
       
         select adv_group_number as last,
-               ag.adv_count max_adv_group_number
+               ag.adv_count, '0' as max_adv_group_number
           from adv_group_map grp, adv_groups ag, adv_user_map map
          where user_id=:user_id
            and event_time     = (

@@ -13,7 +13,7 @@ ad_page_contract {
     admin_link:onevalue
 }
 
-set context {one ad}
+set context {"one ad"}
 
 set title "One Ad: $adv_key"
 set admin_link "
