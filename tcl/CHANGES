@@ -1,0 +1,2 @@
+* adserver-procs.tcl - multiple queries not extracted, query names in "set query_name <query name>", moved to adserver-procs.xql
+* adserver-procs.tcl - changed outer join (+) to UNION statement

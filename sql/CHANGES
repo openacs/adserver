@@ -1,0 +1,6 @@
+* In PG, you have to specify the field type of the foreign key
+* No "CREATE OR REPLACE" and the like statements in PG, object should be dropped first
+* TRUNC(sysdate) changed to current_date
+* Replaced triggers with functions+triggers for PG
+* There "for each statement" functionality is not supported yet in PG, there will be no problem as long as the user uses the admin interface since deletions are done only once
+* adserver-create.sql - changed trigger code for adv_group_count_afr_del, doesn't work since both triggers are called for each row, and data changed in first trigger does not reflect in second

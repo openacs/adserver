@@ -1,0 +1,5 @@
+* index.tcl - changed the adserver_get_ad_html call to enable logging and follow the rotation method of the group
+* adimg.tcl - changed all trunc(sysdate)'s to current_date
+* adimg-postgresql.xql - changed all trunc(current_timestamp) to current_date
+* adhref.tcl - moved adv_update_query, adv_insert to adhref-postgresql.xql and adhref-oracle.xql
+* adhref.tcl - changed all trunc(sysdate)'s to current_date

@@ -1,0 +1,2 @@
+* index.tcl - adv_select_query not extracted, changing the (+) outer join to a UNION statement, moving to index.xql as adv_select_query2
+* index.tcl - another query was not extracted also with adv_select_query as handle, moved to index.xql as adv_select_query1
