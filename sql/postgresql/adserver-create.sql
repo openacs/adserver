@@ -353,10 +353,6 @@ for each row execute procedure adv_group_count_afr_del_row_fun();
 
 insert into advs (adv_key, local_image_p, track_clickthru_p, adv_filename, target_url) 
 values ('ArsDigita', 't', 't', 'arsdigita.gif', 'http://www.arsdigita.com');
-insert into advs (adv_key, local_image_p, track_clickthru_p, adv_filename, target_url) 
-values ('SemiZone', 't', 't', 'semizone_ad.gif', 'http://www.semizone.com');
-insert into advs (adv_key, local_image_p, track_clickthru_p, adv_filename, target_url) 
-values ('Stanford', 't', 't', 'stanford_ad.gif', 'http://www.stanford.com');
 /*
 -- test cases
 delete from advs;
