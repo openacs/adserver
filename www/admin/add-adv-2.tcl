@@ -19,7 +19,7 @@ ad_page_contract {
     @cvs-id $Id$
 } {
     adv_key:notnull
-    target_url:html
+    target_url:allhtml
     local_image_p
     track_clickthru_p
     adv_filename  
