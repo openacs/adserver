@@ -19,7 +19,7 @@
         <vendor url="www.furfly.net">furfly.net, LLC</vendor>
 
         <provides url="adserver" version="4.2"/>
-        <requires url="acs-kernel" version="4.0"/>
+        <requires url="acs-kernel" version="4.6.2"/>
 
         <files>
             <file type="package_spec" path="adserver.info"/>
