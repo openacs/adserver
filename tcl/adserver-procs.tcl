@@ -489,7 +489,7 @@ ad_proc -private adserver_image_url {
     [ad_acs_adserver_pageroot]/$BaseImagePath/$ad_url
 
     the return pathname can be returned using ns_returnfile AND not
-    ns_returnredirect
+    ad_returnredirect
 
  } {
 

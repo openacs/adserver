@@ -46,6 +46,7 @@ db_release_unused_handles
 
 if { $insert_succ_p } {
     ad_returnredirect "one-adv-group?[export_url_vars group_key]"
+    ad_script_abort
 } else {
     set title "Adding group failed"
     set admin_link "
@@ -66,7 +67,8 @@ if { $insert_succ_p } {
     <p> Please use the back button on your browser and change the group name.
     "
 
-    ad_return_template default
 }
+
+ad_return_template default
 
 

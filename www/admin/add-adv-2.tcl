@@ -51,6 +51,7 @@ db_release_unused_handles
 
 if { $insert_succ_p } {
     ad_returnredirect one-adv?[export_url_vars adv_key]
+    ad_script_abort
 } else {
     set title "Adding ad failed"
     set admin_link "
@@ -69,7 +70,8 @@ if { $insert_succ_p } {
     ad with the same ad key. 
     <p> Please use the back button on your browser and change the ad key.
     "
-    ad_return_template default
 
 }
+
+ad_return_template default
 

@@ -27,7 +27,7 @@ if { ![info exists adv_key] || $adv_key=="" || [string equal $adv_key default]} 
         ad_parameter -package_id [ad_acs_adserver_id] DefaultAdTargetURL adserver /
     } [adserver_cache_refresh]]
     ad_returnredirect $target
-    return
+    ad_script_abort
 }
 
 set target_url [db_string adv_url_query "
@@ -40,13 +40,13 @@ if { $target_url == "" } {
         ad_parameter -package_id [ad_acs_adserver_id] DefaultAdTargetURL adserver /
     } [adserver_cache_refresh]]
     ad_returnredirect $target
-    return
+    ad_script_abort
 } 
 
 ad_returnredirect $target_url
 
 if { [info exists suppress_logging_p] && $suppress_logging_p == 1 } {
-    return
+    ad_script_abort
 }
 
 ns_conn close

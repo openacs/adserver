@@ -85,11 +85,10 @@ if {$local_image == 1 || [string equal $local_image t] } {
 }
 
 if { [info exists suppress_logging_p] && $suppress_logging_p == 1 } {
-    return
+    ad_script_abort
 }
 
 # we've returned to the user but let's keep this thread alive to log
-
 ns_conn close
 
 if {$display_default_banner_p == 0} {
