@@ -27,7 +27,7 @@ select count(*) from adv_log where adv_key=:adv_key
       
        select sum (display_count) as n_displays, 
               sum (click_count) as n_clicks, 
-              round (100 * (sum (click_count) /sum (display_count)), 2) as clickthrough_percent, 
+              round(100 * sum (click_count) /sum (display_count),1) as clickthrough_percent, 
               min (entry_date) as first_display, 
               max (entry_date) as last_display 
        from adv_log 

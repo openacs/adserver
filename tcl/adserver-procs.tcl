@@ -229,20 +229,20 @@ ad_proc -public adserver_get_ad_html {
     ###             or spit out doubleclickish url
     ######################################################
 
+        set s_url [adserver_src_attr \
+                      -suppress_logging=$suppress_logging_p \
+                      -adv_key $adv_key]
+
     if {[string equal $track_clickthru_p t]} {
 
         set h_url [adserver_href_attr \
                 -suppress_logging=$suppress_logging_p \
                 -adv_key $adv_key $target_url]
 
-        set s_url [adserver_src_attr \
-                      -suppress_logging=$suppress_logging_p \
-                      -adv_key $adv_key]
-
         set result \
                 "<a href='$h_url'><img src='$s_url' $extra_img_tags></a>"
     } else {
-        set result $target_url
+        set result "<a href=\"$target_url\"><img src='$s_url' $extra_img_tags></a>"
 
         # update the impressions since this won't get called
         # through adimg.tcl

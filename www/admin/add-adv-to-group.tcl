@@ -14,6 +14,7 @@ ad_page_contract {
 }
 
 set title "Add an ad to a group"
+set context "Add an ad to a group"
 set admin_link "
 <table align=right>
 <tr>

@@ -13,6 +13,8 @@ ad_page_contract {
     admin_link:onevalue
 }
 
+set context {one ad}
+
 set title "One Ad: $adv_key"
 set admin_link "
 <table align=right>
@@ -114,7 +116,7 @@ if { $display_count > 0 } {
     db_0or1row adv_info_select "
        select sum (display_count) as n_displays, 
               sum (click_count) as n_clicks, 
-              round (100 * (sum (click_count) /sum (display_count)), 2) as clickthrough_percent, 
+              round (100.0 * (sum(click_count) / sum(display_count)), 2) as clickthrough_percent, 
               min (entry_date) as first_display, 
               max (entry_date) as last_display 
        from adv_log 

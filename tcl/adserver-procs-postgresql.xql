@@ -21,7 +21,7 @@
         update adv_log 
            set display_count = display_count + 1 
          where adv_key = :adv_key 
-           and entry_date = trunc (current_timestamp)
+           and entry_date = current_date
       </querytext>
 </fullquery>
 
@@ -32,12 +32,12 @@
                 insert into adv_log 
                        (adv_key, entry_date, display_count) 
                 values (:adv_key,
-                        trunc (current_timestamp),
+                        current_date,
                         (select 1  
                                  where 0 = (select count (*) 
                                               from adv_log 
                                              where adv_key = :adv_key 
-                                               and entry_date = trunc (current_timestamp))))
+                                               and entry_date = current_date)))
       </querytext>
 </fullquery>
 

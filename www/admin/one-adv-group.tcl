@@ -13,6 +13,7 @@ ad_page_contract {
 }
 
 set title "Adserver Administration One Group"
+set context {one ad group}
 set admin_link "
 <table align=right>
 <tr>
