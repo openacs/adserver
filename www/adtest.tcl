@@ -6,7 +6,7 @@ ad_page_contract {
     @author ron
     @author jerry@hollyjerry.org
     @creation-date 02/06/2000
-    @cvs-id adtest.tcl,v 3.0.12.2 2000/09/22 01:36:39 kevin Exp
+    @cvs-id $Id$
 } {
     
 }

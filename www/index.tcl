@@ -8,7 +8,7 @@ ad_page_contract {
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
     @author modified 3/20/2001 janine@furfly.net
-    @cvs-id index.tcl,v 3.2.2.5 2000/09/22 01:34:19 kevin Exp
+    @cvs-id $Id$
 } -properties {
     title:onevalue
     page_content:onevalue

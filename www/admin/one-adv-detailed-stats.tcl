@@ -4,7 +4,7 @@ ad_page_contract {
     @param adv_key:notnull
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
-    @cvs-id one-adv-detailed-stats.tcl,v 3.2.2.5 2000/10/20 23:21:52 avni Exp
+    @cvs-id $Id$
 } {
     adv_key:notnull
 } -properties {

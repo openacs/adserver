@@ -9,7 +9,7 @@ ad_page_contract {
 
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
-    @cvs-id update-adv.tcl,v 3.2.2.4 2000/10/20 23:21:53 avni Exp
+    @cvs-id $Id$
 } {
     target_url:allhtml
     track_clickthru_p

@@ -9,7 +9,7 @@ ad_page_contract {
 
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
-    @cvs-id add-adv-group-2.tcl,v 3.1.6.6 2000/10/20 23:21:51 avni Exp
+    @cvs-id $Id$
 } {
     group_key:notnull,trim
     pretty_name:trim

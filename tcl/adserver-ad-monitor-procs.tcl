@@ -14,7 +14,7 @@ ad_host_administrator_last_notified
 
     @creation-date 6 Nov 1998
     @author philg@mit.edu
-    @cvs-id ad-monitor.tcl,v 3.0.14.2 2000/07/25 11:27:48 ron Exp
+    @cvs-id $Id$
 }
 
 ns_share -init { set ad_host_administrator_last_notified 0 } ad_host_administrator_last_notified

@@ -6,7 +6,7 @@ ad_page_contract {
 
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
-    @cvs-id remove-adv-from-group.tcl,v 3.1.6.4 2000/09/22 01:34:20 kevin Exp
+    @cvs-id $Id$
 } {
     group_key:notnull
     adv_key:notnull

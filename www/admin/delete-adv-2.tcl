@@ -4,7 +4,7 @@ ad_page_contract {
     @param adv_key:notnull
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
-    @cvs-id delete-adv-2.tcl,v 3.1.6.4 2000/09/22 01:34:19 kevin Exp
+    @cvs-id $Id$
 } {
     adv_key:notnull
 } -properties {

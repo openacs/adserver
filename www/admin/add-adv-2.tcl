@@ -16,7 +16,7 @@ ad_page_contract {
 
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
-    @cvs-id add-adv-2.tcl,v 3.1.6.6 2000/10/20 23:21:51 avni Exp
+    @cvs-id $Id$
 } {
     adv_key:notnull
     target_url:html

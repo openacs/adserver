@@ -3,7 +3,7 @@ ad_page_contract {
     @param group_key:notnull
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
-    @cvs-id one-adv-group.tcl,v 3.1.6.3 2000/07/21 03:56:00 ron Exp
+    @cvs-id $Id$
 } {
     group_key:notnull
 } -properties {

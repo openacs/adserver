@@ -6,7 +6,7 @@ ad_page_contract {
     @param none
     @author modified 07/13/200 by mchu@arsdigita.com
     @author modified 10/15/2000 jerry@hollyjerry.org
-    @cvs-id add-adv-group.tcl,v 3.2.2.2 2000/07/21 03:55:59 ron Exp
+    @cvs-id $Id$
 } {
     
 } -properties {

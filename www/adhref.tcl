@@ -12,7 +12,7 @@ ad_page_contract {
     @author philg@mit.edu
     @author jerry@hollyjerry.org
     @creation-date 11/24/1999
-    @cvs-id $Id$adhref.tcl,v 3.1.6.2 2000/07/22 20:50:37 berkeley Exp
+    @cvs-id $Id$
 } {
     adv_key
     suppress_logging_p:optional  

@@ -8,7 +8,7 @@ ad_page_contract {
     @author philg@mit.edu
     @author jerry@hollyjerry.org
     @creation-date 11/24/1999
-    @cvs-id adimg.tcl,v 3.2.2.4 2000/09/22 01:36:39 kevin Exp
+    @cvs-id $Id$
 } {
     {adv_key ""}
     suppress_logging_p:optional
