@@ -238,13 +238,13 @@ for each row execute procedure advs_count_afr_del_row_fun();
 -- statement level trigger to perform the swaps.
 create function advs_count_afr_del_fun() returns opaque as '
 declare
-    next integer;
+    nextval integer;
     s record;
 begin
     -- find the highest numbered ad
     -- advs_properties is guaranteed to exist.
     select adv_count
-      into next
+      into nextval
       from advs_properties;
        -- for update; -- do I need the for update?
 
@@ -254,19 +254,19 @@ begin
         -- find the ad that has that number and renumber it
         update advs
            set adv_number = s.swap
-         where adv_number = next - 1;
+         where adv_number = nextval - 1;
 
         -- delete the row 
         delete 
           from advs_swaps 
          where swap = s.swap;
  
-        next := next - 1;
+        nextval := nextval - 1;
     end loop;
 
     -- update the highest number
     update advs_properties 
-       set adv_count = next;
+       set adv_count = nextval;
 
     return new;
 end;

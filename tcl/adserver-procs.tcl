@@ -98,7 +98,7 @@ ad_proc -public adserver_get_ad_html {
 
      If method is not supplied, it uses the natural ad
      selection method of the group.  Otherwise, it follows method,
-     which may be one of least-exposure-first, user-sequential,
+     which may be one of least-exposure-first, sequential,
      or random.
 
      if the ad_number is not blank, it should be an integer specifying
@@ -176,6 +176,7 @@ ad_proc -public adserver_get_ad_html {
                   order by nvl (display_count, 0)"
                 }
                 user-sequential {
+# note -- logging must be on, and this switch should be sequential
                     set query_name adserver_get_ad_by_ad_key
                     if {[string equal "" $user_id]} {
                         set user_id [ad_get_user_id]
@@ -375,7 +376,7 @@ ad_proc adserver_get_sequential_ad_key { {-user_id ""} group_key} {
 
     set selection [db_0or1row adserver_adv_key {
         select adv_group_number as last,
-               ag.adv_count max_adv_group_number
+               ag.adv_count, '0' as max_adv_group_number
           from adv_group_map grp, adv_groups ag, adv_user_map map
          where user_id=:user_id
            and event_time     = (

@@ -54,23 +54,33 @@
  
 <fullquery name="adserver_get_ad_html.adserver_get_ad_least_exposure_first">      
       <querytext>
-                    select map.adv_key, track_clickthru_p, target_url, display_count
-                      from adv_group_map map, advs_todays_log log, advs
-                     where group_key = :group_key
-                       and map.adv_key = advs.adv_key
-                       and map.adv_key = log.adv_key
 
-		UNION
+           select 
+             map.adv_key, track_clickthru_p, target_url, display_count 
+           from 
+             adv_group_map map, adv_log log , advs 
+           where 
+             group_key = :group_key 
+             and map.adv_key = advs.adv_key 
+             and map.adv_key = log.adv_key 
+             and log.entry_date=now()::date
 
-                    select map.adv_key, track_clickthru_p, target_url, 0 as display_count
-                      from adv_group_map map, advs
-                     where group_key = :group_key
-                       and map.adv_key = advs.adv_key
-		       and (select count(*) from adv_log where advs.adv_key=adv_log.adv_key)=0
+           UNION
 
-		order by display_count asc		
+           select 
+             map.adv_key, track_clickthru_p, target_url, 
+           case when 
+             display_count is null then 0 else display_count end as display_count 
+           from 
+             adv_group_map map, advs 
+             left join adv_log on (advs.adv_key=adv_log.adv_key and adv_log.entry_date=now()::date) 
+           where 
+             group_key = :group_key 
+             and map.adv_key = advs.adv_key
 
-		limit 1
+           order by display_count asc		
+
+	   limit 1
 
       </querytext>
 </fullquery>
