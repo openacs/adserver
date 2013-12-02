@@ -28,7 +28,11 @@ proc adserver_notify_host_administrator {subject body {log_p 0}} {
     if { [ns_time] > [expr $ad_host_administrator_last_notified + 900] } {
 	# more than 15 minutes have elapsed since last note
 	set ad_host_administrator_last_notified [ns_time]
-	if [catch { ns_sendmail [ad_host_administrator] [ad_system_owner] $subject $body } errmsg] {
+	if [catch { acs_mail_lite::send \
+			-to_addr [ad_host_administrator] \
+			-from_addr [ad_system_owner] \
+			-subject $subject \
+			--body $body } errmsg] {
 	    ns_log Error "ad_notify_host_administrator: failed sending email note to [ad_host_administrator]: $subject\n\n$body\n\n "
 	}
     }
