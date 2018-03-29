@@ -1,7 +1,7 @@
 # /www/admin/adserver/add-adv-to-group-2.tcl
 
 ad_page_contract {
-    target page for add-adv-to-troup.tcl
+    target page for add-adv-to-group.tcl
 
     @param group_key:notnull
     @param adv_key:notnull
