@@ -300,7 +300,7 @@ ad_proc -public adserver_get_ad_html {
 
 
 ############################################################
-### internal procs to help get an api helper funcions
+### internal procs to help get an api helper functions
 ### divide and conquer - these routines handle easier cases
 ############################################################
 
