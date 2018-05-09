@@ -27,7 +27,7 @@ Thanks for visiting.  Here's a sampling of our sponsors' ads.
 "
 set package_id [ad_conn package_id]
 
-set ads {}
+set ads [list]
 set count 0
 db_foreach adserver_sample_groups {
     select group_key, pretty_name, adv_count, rotation_method
