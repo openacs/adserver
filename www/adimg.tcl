@@ -4,7 +4,7 @@ ad_page_contract {
     This page tries to find an image file to serve to the user,
     serves it, closes the TCP connection to the user.
     while this thread is still alive, logs the ad display
-    
+
     @author philg@mit.edu
     @author jerry@hollyjerry.org
     @creation-date 11/24/1999
@@ -14,7 +14,7 @@ ad_page_contract {
     suppress_logging_p:optional
 }
 
-# last edited November 24, 1999 to address a concurrency problem 
+# last edited November 24, 1999 to address a concurrency problem
 
 set display_default_banner_p 0
 
@@ -30,13 +30,13 @@ if { ![info exists adv_key] || $adv_key == "" || [string equal $adv_key default]
     } [adserver_cache_refresh]]
 } else {
     if { [db_0or1row adv_select "
-              SELECT adv_filename as ad_filename_stub, 
+              SELECT adv_filename as ad_filename_stub,
                      decode(local_image_p, 't', 1, 0) as local_image
                 FROM advs
                 WHERE adv_key = :adv_key"] } {
         # correct vars set
     } else {
-	set display_default_banner_p 1
+        set display_default_banner_p 1
     }
 }
 
@@ -48,7 +48,7 @@ if {$local_image == 1 || [string equal $local_image t] } {
         ns_log Error "Didn't find ad: $ad_filename"
 
         if {$display_default_banner_p == 1} {
-            # we're really in bad shape; no row exists and 
+            # we're really in bad shape; no row exists and
             # we don't have an adv_key
             ns_log Error "adimg.tcl didn't find an ad matching " \
                     "\"$adv_key\" AND no default file exists"
@@ -94,9 +94,9 @@ ns_conn close
 if {$display_default_banner_p == 0} {
 
     db_dml adv_log_update_query "
-      update adv_log 
-         set display_count = display_count + 1 
-       where adv_key = :adv_key 
+      update adv_log
+         set display_count = display_count + 1
+       where adv_key = :adv_key
          and entry_date = current_date"
 
     set n_rows [db_resultrows]
@@ -105,14 +105,14 @@ if {$display_default_banner_p == 0} {
         # there wasn't a row in the database; we can't just do the obvious
         # insert because another thread might be executing concurrently
         db_dml adv_insert "
-        insert into adv_log 
-               (adv_key, entry_date, display_count) 
+        insert into adv_log
+               (adv_key, entry_date, display_count)
         values (:adv_key,
                 current_date,
-                (select 1 from dual 
-                         where 0 = (select count (*) 
-                                      from adv_log 
-                                     where adv_key = :adv_key 
+                (select 1 from dual
+                         where 0 = (select count (*)
+                                      from adv_log
+                                     where adv_key = :adv_key
                                       and entry_date = current_date)))"
     }
 
@@ -122,11 +122,16 @@ if {$display_default_banner_p == 0} {
         set user_id [ad_get_user_id]
         if { $user_id == 0 } {
             set user_id ""
-        } 
+        }
         # we know who this user is
         db_dml adv_known_user_insert "
-        insert into adv_user_map (user_id, adv_key, event_time, event_type) 
+        insert into adv_user_map (user_id, adv_key, event_time, event_type)
         values (:user_id, :adv_key, sysdate, 'd')"
     }
 }
 
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

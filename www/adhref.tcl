@@ -15,10 +15,10 @@ ad_page_contract {
     @cvs-id $Id$
 } {
     adv_key
-    suppress_logging_p:optional  
+    suppress_logging_p:optional
 }
 
-# last edited November 24, 1999 to address a concurrency problem 
+# last edited November 24, 1999 to address a concurrency problem
 
 set adv_key [ns_urldecode $adv_key]
 
@@ -31,8 +31,8 @@ if { ![info exists adv_key] || $adv_key=="" || [string equal $adv_key default]} 
 }
 
 set target_url [db_string adv_url_query "
-select target_url 
-  from advs 
+select target_url
+  from advs
  where adv_key = :adv_key" -default ""]
 
 if { $target_url == "" } {
@@ -41,7 +41,7 @@ if { $target_url == "" } {
     } [adserver_cache_refresh]]
     ad_returnredirect $target
     ad_script_abort
-} 
+}
 
 ad_returnredirect $target_url
 
@@ -54,9 +54,9 @@ ns_conn close
 # we've returned to the user but let's keep this thread alive to log
 
 set update_sql "
-update adv_log 
-   set click_count = click_count + 1 
- where adv_key = :adv_key 
+update adv_log
+   set click_count = click_count + 1
+ where adv_key = :adv_key
    and entry_date = trunc (sysdate)
 "
 
@@ -65,21 +65,21 @@ db_dml adv_update_query $update_sql
 set n_rows [db_resultrows]
 
 if { $n_rows == 0 } {
-    
+
     # there wasn't already a row there let's be careful in case
     # another thread is executing concurrently on the 10000:1 chance
     # that it is, we might lose an update but we won't generate an
     # error in the error log and set off all the server monitor alarms
-    
+
     set insert_sql "
     insert into adv_log
            (adv_key, entry_date, click_count)
     values (:adv_key,
             trunc (sysdate),
-            (select 1 from dual 
-                     where 0 = (select count (*) 
-                                  from adv_log 
-                                 where adv_key = :adv_key 
+            (select 1 from dual
+                     where 0 = (select count (*)
+                                  from adv_log
+                                 where adv_key = :adv_key
                                    and entry_date = trunc (sysdate))))"
     db_dml adv_insert $insert_sql
 }
@@ -90,11 +90,16 @@ if [util_memoize {
     set user_id [ad_get_user_id]
     if { $user_id == 0 } {
         set user_id ""
-    } 
+    }
     # we know who this user is
     db_dml adv_known_user_insert "
-    insert into adv_user_map (user_id, adv_key, event_time, event_type) 
+    insert into adv_user_map (user_id, adv_key, event_time, event_type)
     values (:user_id, :adv_key, sysdate, 'c')
     "
 }
 
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
