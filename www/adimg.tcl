@@ -121,7 +121,7 @@ if {$display_default_banner_p == 0} {
     } [adserver_cache_refresh]] {
         set user_id [ad_get_user_id]
         if { $user_id == 0 } {
-            set user_id [db_null]
+            set user_id ""
         } 
         # we know who this user is
         db_dml adv_known_user_insert "

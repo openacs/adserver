@@ -278,7 +278,7 @@ ad_proc -public adserver_get_ad_html {
             } [adserver_cache_refresh]]} {
                 set user_id [ad_get_user_id]
                 if {$user_id == 0} {
-                    set user_id [db_null]
+                    set user_id ""
                 }
                 # ignore logged out clicks, for now....
                 db_dml adserver_defs_adv_user_insert {
