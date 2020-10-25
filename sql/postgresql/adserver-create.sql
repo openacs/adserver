@@ -196,7 +196,7 @@ Here's the insertion of a new ad trigger:
 -- trigger to insert an advertisement and
 -- automatically determine/maintain the highest
 -- advertisement number
-create function advs_count_bfr_insert_fun() returns opaque as '
+create function advs_count_bfr_insert_fun() returns trigger as '
 declare
         top integer;
 begin
@@ -222,7 +222,7 @@ for each row execute procedure advs_count_bfr_insert_fun();
 -- row level trigger to "save" an intermediate 
 -- adnumber to be swapped for the "high" adnumber.
 -- for each row to be deleted do:
-create function advs_count_afr_del_row_fun() returns opaque as '
+create function advs_count_afr_del_row_fun() returns trigger as '
 begin
     insert into advs_swaps values (old.adv_number);
 
@@ -235,7 +235,7 @@ after delete on advs
 for each row execute procedure advs_count_afr_del_row_fun();
 
 -- statement level trigger to perform the swaps.
-create function advs_count_afr_del_fun() returns opaque as '
+create function advs_count_afr_del_fun() returns trigger as '
 declare
     v_next integer;
     s record;
@@ -304,7 +304,7 @@ Here's the insertion of a new ad into a group trigger:
 
 */
 
-create function adv_group_count_bfr_insert_fun() returns opaque as '
+create function adv_group_count_bfr_insert_fun() returns trigger as '
 declare 
     top integer; 
 begin 
@@ -335,7 +335,7 @@ is deleted:
 
 */
 
-create function adv_group_count_afr_del_row_fun() returns opaque as '
+create function adv_group_count_afr_del_row_fun() returns trigger as '
 begin 
     update adv_group_map set adv_group_number=adv_group_number-1 where adv_group_number>old.adv_group_number and group_key=old.group_key;
 
